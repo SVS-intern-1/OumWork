@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  lms:
+    volumes:
+      - ~/.local/share/tutor/themes/mytheme:/var/openedx/themes/mytheme
+  cms:
+    volumes:
+      - ~/.local/share/tutor/themes/mytheme:/var/openedx/themes/mytheme

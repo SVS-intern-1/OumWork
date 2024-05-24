@@ -1,0 +1,72 @@
+CMS_HOST: studio.local.edly.io
+CMS_OAUTH2_SECRET: T6qdKaLZyS9QA35HzUpW8njS
+CONTACT_EMAIL: contact@local.edly.io
+ENABLE_HTTPS: false
+ID: JSAxYw5vdDBRmiC6nmkF47R8
+INDIGO_WELCOME_MESSAGE: Hello
+JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
+
+  MIIEpAIBAAKCAQEA38fQcHIEc85+Pb5w/26PhuWiwceEtl2aewTT+Wuphn/Vjd4e
+
+  s6gNYuoL9IoWqrQyvKklZAdJDoKy4DF1p+cZkGuwzse13KgeK6FnpZOojzWENlon
+
+  Ppw6ljCmHiKyV8JPQqOsxE7AI+hVGpILvO6ynsBdsv9XCHcSpm/PHPTTmavFrnHC
+
+  o5aV20p4WHnKTr7sq5dPtVpjjbFKbN3cVQT+OR6TEVjOgMKRmjeAr2wvDWLE48cN
+
+  yy/osA6vxr+HCq1PUHpPPcudfiCRdgALLip4G2heHtGRRO6UGJJpnKT33Kjas+BS
+
+  BGuS7dwX+gDc208HHihlhgSsOAnCO2MU5JZsfQIDAQABAoIBACnHMOGxU6X4NObb
+
+  lVaGwlp1qD1jvaHbV1IkvFtaL3/aAVlXUOWLGBaxqdI5bpJninpg3MdwOcIxAeqr
+
+  qTLTyRjGli+ApvH/XASawVIu/z7fR6PrEF0WxzRPeE/ze9a5Atmm24QZzLLXdv37
+
+  KqBW8veC4+tdUtcUfeGfSaw3BAMx7lfdGaFSBxGzKi0vtzh7DDJCCOXwm4DNaxM4
+
+  pYxvw2YvaSjpIXm7esMQV/vtmcyf8tzj+39WK/Vhnt7+RLQZtOneDQSyijEXslQS
+
+  7esJwRUQOwFIkXJomxMyXtwQ1SUoczo/wNTduORxbwCvfgJtOjy7M6iCFywko4Aq
+
+  ZVHG+KECgYEA63JthCwEBiAKlqxaUugW+mbxylr0TQrsFGUa/VGD0I6C0/IFswuP
+
+  lS8Oi1gzToJlig2jUhpoRHpIWhzDyilewojS1HAlxK7NOq3Wf+DGSiLQNyMk4hhB
+
+  xzZY+nmD8PiOZz6HupdaTKpIZhhUia/v9IFDTYZwwk0h9X0eES8BMB0CgYEA81Cs
+
+  lNQ844DDsdsI7cu4Pzzv0NV7/Y0ntZiKIIxp+QpiAysOc0fGpAx7A0Jm4Ix1hcQB
+
+  9y3Jc0pl6QSlS4AS1xZAtnnm1iezuSAg1xzgnL33Y0cx9GeL4iFLCNhjMnwPmtDe
+
+  m5uxj7NmLXuJcSC6HHPtu2oLlyQGPsSfNupEP+ECgYEApreiAMNCHiw2Ezb7xlT9
+
+  YFXgxE7fSmZ/gHmPQOylj9o5nWZ0zrFS/GoTvGu5+M+woq7BhPOZ/VMxRE21/cKJ
+
+  jOphj3fR5pF4VSKfDnHVNs2r7j7+cPKIMU20d7fvy4PVIhpO9bsSf9Lb7R8xTUW9
+
+  fb7CL3URBySi9TehQL2t86kCgYEA2virmHU5JvVnKNUawAcrFZ5dpO+72oACUKer
+
+  B4fWh04Uzw0cwBrEZjblLhXASC2gRnYT3sPSHHPEK2UG7V+hlPht3MrwN6MbV2vW
+
+  okFW0zkTPsF/75iQhz23LYqwG2sTEB0RebEwp0aomh4nnyv40kpylMvnCmpdRHfn
+
+  YaCLM4ECgYAmPxgknDaJNnHsNNRAh/SjRlBOUQ5jaa+aveYGgcsmRr+zC9wpqXxv
+
+  VSkClUXrkNkuQd2xA033K6rtYzZB30HCPdb82K7Oe2/tqotXtG/mt3V5ntApe7tL
+
+  Zykwzo3+ejcprSG4E2ByBFBxA/5s61tji1h4tZIC460KCOEYMsrqUw==
+
+  -----END RSA PRIVATE KEY-----'
+LANGUAGE_CODE: en
+LMS_HOST: local.edly.io
+MOUNTS:
+- /home/nvari/Desktop/git/svs-edx-v1
+MYSQL_ROOT_PASSWORD: E3cSV5xg
+OPENEDX_MYSQL_PASSWORD: QfBuGd7o
+OPENEDX_SECRET_KEY: h4ZbYVb8DJHlDl96pwn8lDTL
+PLATFORM_NAME: My Open edX
+PLUGINS:
+- indigo
+- mfe
+PLUGIN_INDEXES:
+- https://overhang.io/tutor/main
