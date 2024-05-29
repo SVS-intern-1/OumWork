@@ -1,4 +1,4 @@
-// lib/screens/home_screen.dart (update the Home tab to display tweets)
+// lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
 import 'package:test_flutter_desktop/models/tweet.dart';
 import 'package:test_flutter_desktop/models/tweet_card.dart';
@@ -90,7 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.white, // Set the unselected icon color to white
         onTap: _onItemTapped,
       ),
     );

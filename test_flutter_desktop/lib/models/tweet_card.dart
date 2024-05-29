@@ -3,10 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:test_flutter_desktop/models/tweet.dart';
 import 'package:intl/intl.dart';
 
-class TweetCard extends StatelessWidget {
+class TweetCard extends StatefulWidget {
   final Tweet tweet;
 
-  const TweetCard({super.key, required this.tweet});
+  TweetCard({required this.tweet});
+
+  @override
+  _TweetCardState createState() => _TweetCardState();
+}
+
+class _TweetCardState extends State<TweetCard> {
+  bool isLiked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,7 @@ class TweetCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
-                  backgroundImage: NetworkImage(tweet.avatarUrl),
+                  backgroundImage: NetworkImage(widget.tweet.avatarUrl),
                 ),
                 SizedBox(width: 10.0),
                 Expanded(
@@ -29,7 +36,7 @@ class TweetCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        tweet.username,
+                        widget.tweet.username,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16.0,
@@ -37,14 +44,14 @@ class TweetCard extends StatelessWidget {
                       ),
                       SizedBox(height: 5.0),
                       Text(
-                        DateFormat('yyyy-MM-dd – kk:mm').format(tweet.timestamp),
+                        DateFormat('yyyy-MM-dd – kk:mm').format(widget.tweet.timestamp),
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 12.0,
                         ),
                       ),
                       SizedBox(height: 10.0),
-                      Text(tweet.content),
+                      Text(widget.tweet.content),
                     ],
                   ),
                 ),
@@ -58,17 +65,24 @@ class TweetCard extends StatelessWidget {
                   icon: Icon(Icons.comment),
                   onPressed: () {},
                 ),
-                Text('${tweet.replies}'),
+                Text('${widget.tweet.replies}'),
                 IconButton(
                   icon: Icon(Icons.repeat),
                   onPressed: () {},
                 ),
-                Text('${tweet.retweets}'),
+                Text('${widget.tweet.retweets}'),
                 IconButton(
-                  icon: Icon(Icons.favorite_border),
-                  onPressed: () {},
+                  icon: Icon(
+                    isLiked ? Icons.favorite : Icons.favorite_border,
+                    color: isLiked ? Colors.pink : null,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isLiked = !isLiked;
+                    });
+                  },
                 ),
-                Text('${tweet.likes}'),
+                Text('${widget.tweet.likes}'),
               ],
             ),
           ],

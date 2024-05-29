@@ -1,22 +1,20 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:test_flutter_desktop/screens/homescreen.dart';
+import 'package:test_flutter_desktop/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Twitter Clone',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: darkTheme,
       home: HomeScreen(),
+      debugShowCheckedModeBanner: false, // Set debugShowCheckedModeBanner to false
     );
   }
 }
