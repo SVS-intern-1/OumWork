@@ -1,7 +1,10 @@
 // lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
-import 'package:test_flutter_desktop/models/tweet.dart';
-import 'package:test_flutter_desktop/models/tweet_card.dart';
+import 'package:flutter_twitter_clone/models/tweet.dart';
+import 'package:flutter_twitter_clone/widgets/tweet_card.dart';
+import 'package:flutter_twitter_clone/screens/profile_screen.dart';
+import 'package:flutter_twitter_clone/screens/search_screen.dart';
+import 'package:flutter_twitter_clone/screens/notification_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -41,12 +44,27 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
-  static List<Widget> _widgetOptions = <Widget>[
-    Text('Home', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-    Text('Search', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-    Text('Notifications', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-    Text('Profile', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-  ];
+  Widget _buildScreen() {
+    switch (_selectedIndex) {
+      case 0:
+        return ListView.builder(
+          itemCount: tweets.length,
+          itemBuilder: (context, index) {
+            return TweetCard(tweet: tweets[index]);
+          },
+        );
+      case 1:
+        return SearchScreen();
+      case 2:
+        return NotificationScreen();
+      case 3:
+        return ProfileScreen();
+      default:
+        return Center(
+          child: Text('Home', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        );
+    }
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -60,16 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Twitter Clone'),
       ),
-      body: Center(
-        child: _selectedIndex == 0
-            ? ListView.builder(
-                itemCount: tweets.length,
-                itemBuilder: (context, index) {
-                  return TweetCard(tweet: tweets[index]);
-                },
-              )
-            : _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _buildScreen(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -90,8 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.white, // Set the unselected icon color to white
+        selectedItemColor: Colors.white, // Set the selected icon color to white
+        unselectedItemColor: Colors.grey, // Set the unselected icon color to grey
         onTap: _onItemTapped,
       ),
     );
