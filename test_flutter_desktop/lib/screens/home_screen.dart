@@ -5,6 +5,8 @@ import 'package:flutter_twitter_clone/widgets/tweet_card.dart';
 import 'package:flutter_twitter_clone/screens/profile_screen.dart';
 import 'package:flutter_twitter_clone/screens/search_screen.dart';
 import 'package:flutter_twitter_clone/screens/notification_screen.dart';
+import 'package:flutter_twitter_clone/screens/new_tweet_screen.dart';
+import 'package:flutter_twitter_clone/screens/inbox_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,6 +15,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+
+  // Assuming the current user is 'User1'
+  final String currentUser = 'User1';
 
   List<Tweet> tweets = [
     Tweet(
@@ -44,7 +49,15 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
+  void _addNewTweet(Tweet tweet) {
+    setState(() {
+      tweets.insert(0, tweet); // Insert new tweet at the top
+    });
+  }
+
   Widget _buildScreen() {
+    List<Tweet> currentUserTweets = tweets.where((tweet) => tweet.username == currentUser).toList();
+
     switch (_selectedIndex) {
       case 0:
         return ListView.builder(
@@ -58,7 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
       case 2:
         return NotificationScreen();
       case 3:
-        return ProfileScreen();
+        return ProfileScreen(userTweets: currentUserTweets);
+      case 4:
+        return InboxScreen();
       default:
         return Center(
           child: Text('Home', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
@@ -79,6 +94,19 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Twitter Clone'),
       ),
       body: _buildScreen(),
+      floatingActionButton: (_selectedIndex == 0 || _selectedIndex == 3)
+          ? FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewTweetScreen(onTweetCreated: _addNewTweet),
+                  ),
+                );
+              },
+              child: Icon(Icons.add),
+            )
+          : null,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -97,10 +125,14 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mail),
+            label: 'Inbox',
+          ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white, // Set the selected icon color to white
-        unselectedItemColor: Colors.grey, // Set the unselected icon color to grey
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
       ),
     );

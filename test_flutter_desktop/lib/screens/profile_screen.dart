@@ -1,7 +1,13 @@
 // lib/screens/profile_screen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_twitter_clone/models/tweet.dart';
+import 'package:flutter_twitter_clone/widgets/tweet_card.dart';
 
 class ProfileScreen extends StatelessWidget {
+  final List<Tweet> userTweets;
+
+  ProfileScreen({required this.userTweets});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +72,15 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 Text('Followers'),
               ],
+            ),
+            SizedBox(height: 16.0),
+            Expanded(
+              child: ListView.builder(
+                itemCount: userTweets.length,
+                itemBuilder: (context, index) {
+                  return TweetCard(tweet: userTweets[index]);
+                },
+              ),
             ),
           ],
         ),
