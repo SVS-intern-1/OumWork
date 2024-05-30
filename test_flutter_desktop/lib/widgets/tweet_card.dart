@@ -1,6 +1,6 @@
-// lib/models/tweet_card.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_twitter_clone/models/tweet.dart';
+import 'package:flutter_twitter_clone/widgets/comment_screen.dart';
 import 'package:intl/intl.dart';
 
 class TweetCard extends StatefulWidget {
@@ -14,6 +14,7 @@ class TweetCard extends StatefulWidget {
 
 class _TweetCardState extends State<TweetCard> {
   bool isLiked = false;
+  bool isRetweeted = false;
 
   @override
   Widget build(BuildContext context) {
@@ -63,12 +64,24 @@ class _TweetCardState extends State<TweetCard> {
               children: [
                 IconButton(
                   icon: Icon(Icons.comment),
-                  onPressed: () {},
+                  onPressed: () {
+                    // Open comment screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CommentScreen(tweet: widget.tweet),
+                      ),
+                    );
+                  },
                 ),
                 Text('${widget.tweet.replies}'),
                 IconButton(
-                  icon: Icon(Icons.repeat),
-                  onPressed: () {},
+                  icon: Icon(Icons.repeat, color: isRetweeted ? Colors.green : null),
+                  onPressed: () {
+                    setState(() {
+                      isRetweeted = !isRetweeted;
+                    });
+                  },
                 ),
                 Text('${widget.tweet.retweets}'),
                 IconButton(
