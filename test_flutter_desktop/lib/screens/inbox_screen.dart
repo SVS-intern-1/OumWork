@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_twitter_clone/models/conversation.dart';
 import 'package:flutter_twitter_clone/models/message.dart';
-import 'package:flutter_twitter_clone/screens/chat_screen.dart';
+import 'chat_screen.dart';
 
 class InboxScreen extends StatelessWidget {
   final List<Conversation> conversations = [
